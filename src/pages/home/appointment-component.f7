@@ -1,0 +1,109 @@
+<template>
+    <div class="appointment-wrapper">
+
+        <div class="appointment-date">
+            <div class="appointment-caption">
+                <span>Appointment date</span>
+                <img src="images/options.svg" />
+            </div>
+            <div class="appointment-info">
+                <div class="appointment-time">
+                    <span>${props.start}</span>
+                    <img src="images/right.svg" />
+                    <span>${props.end}</span>
+                </div>
+                <span>${props.date}</span>
+            </div>
+        </div>
+        <div class="appointment-doctor">
+            <div class="appointment-doctor-image-wrapper">
+                <img class="appointment-doctor-image" src="${props.docimage}" />
+            </div>
+            <div class="appointment-doctor-notification"></div>
+            <span class="appointment-doctor-name">
+                dr ${props.docname}
+            </span>
+        </div>
+
+    </div>
+</template>
+<style>
+    .appointment-wrapper {
+        padding: 12px 12px 12px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .appointment-date {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .appointment-caption {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--text-color);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 24px;
+        height: 24px;
+    }
+
+    .appointment-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--text-color-accent);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 24px;
+        height: 24px;
+    }
+
+    .appointment-time {
+        display: flex;
+        align-items: center;
+        gap: 0;
+    }
+
+    .appointment-doctor {
+        display: flex;
+        position: relative;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .appointment-doctor-image-wrapper {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        overflow: hidden;
+
+    }
+
+    .appointment-doctor-notification {
+        position: absolute;
+        top: 0;
+        left: 24px;
+        width: 7px;
+        height: 7px;
+        border-radius: 7px;
+        border: 1px solid #FFF;
+        background: #64FF4A;
+    }
+
+    .appointment-doctor-name {
+        color: var(--text-color);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 24px;
+    }
+</style>
+<script>
+    export default (props) => {
+        return $render
+    }
+</script>

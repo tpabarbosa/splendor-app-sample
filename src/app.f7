@@ -1,0 +1,16 @@
+<template>
+  <div id="app">
+    <!-- Main view, should have "view-main" class -->
+    <div class="view view-main view-init safe-areas" data-url="/"></div>
+
+  </div>
+</template>
+<style>
+</style>
+
+<script>
+  export default (props, { $store }) => {
+    let user = $store.getters.user;
+    return $render;
+  }
+</script>

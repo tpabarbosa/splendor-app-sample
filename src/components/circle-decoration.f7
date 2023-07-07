@@ -1,0 +1,77 @@
+<template>
+    <div class="circle-decoration-wrapper" style="${scale} top:${props.top}; left:${props.left};">
+        <div class="circle-decoration circle-1"></div>
+        <div class="circle-decoration circle-2"></div>
+        <div class="circle-decoration circle-3"></div>
+        <div class="circle-decoration circle-4"></div>
+        <div class="circle-decoration circle-5"></div>
+        <div class="circle-decoration circle-6"></div>
+    </div>
+</template>
+<style>
+    .circle-decoration-wrapper {
+        position: absolute;
+        z-index: -1;
+        width: 294px;
+        height: 294px;
+    }
+
+    .circle-decoration {
+        position: absolute;
+        border-radius: 100%;
+    }
+
+    .circle-1 {
+        border: 1px solid rgba(230, 236, 247, 0.30);
+        width: 294px;
+        height: 294px;
+        top: 0;
+        left: 0;
+    }
+
+    .circle-2 {
+        border: 1px solid rgba(230, 236, 247, 0.40);
+        width: 234.737px;
+        height: 234.737px;
+        top: 29.6px;
+        left: 29.6px;
+    }
+
+    .circle-3 {
+        border: 1px solid rgba(230, 236, 247, 0.50);
+        width: 182.882px;
+        height: 182.882px;
+        top: 55.6px;
+        left: 55.6px;
+    }
+
+    .circle-4 {
+        border: 1px solid rgba(230, 236, 247, 0.60);
+        width: 131.027px;
+        height: 131.027px;
+        top: 81.5px;
+        left: 81.5px;
+    }
+
+    .circle-5 {
+        border: 1px solid rgba(230, 236, 247, 0.70);
+        width: 86.58px;
+        height: 86.58px;
+        top: 104px;
+        left: 104px;
+    }
+
+    .circle-6 {
+        border: 1px solid rgba(230, 236, 247, 0.70);
+        width: 46.762px;
+        height: 46.762px;
+        top: 124px;
+        left: 124px;
+    }
+</style>
+<script>
+    export default (props, { $h }) => {
+        let scale = props.scale ? `transform:scale(${props.scale});` : '';
+        return $render;
+    }
+</script>

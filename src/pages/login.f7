@@ -1,0 +1,170 @@
+<template>
+    <div class="page no-swipeback login-screen-page" data-name="login">
+
+        <div class="page-content login-screen-content login_page-content">
+            <circle-decoration scale="1.57" top="calc(50% - 10px)" left="115px" />
+            <div class="login-screen-title login_page-title">Wellcome to our app!</div>
+            <form>
+                <div class="login_page-input-wrapper">
+                    <div>
+                        <input class="login_page-input ${usernameError ? 'error' : ''}" type="text" name="username"
+                            placeholder="Your username or email" required value="${username}"
+                            @input="${updateUsername}" />
+                        <span class="error-message" innerHTML="${usernameError ? err_message.value : ''}"></span>
+                    </div>
+                    <div>
+                        <input class="login_page-input ${passwordError ? 'error' : ''}" type="password" name="password"
+                            placeholder="Your password" required value="${password}" @input="${updatePassword}" />
+                        <span class="error-message" innerHTML="${passwordError ? err_message.value : ''}"></span>
+                    </div>
+                    <div class="button-wrapper">
+                        <button type="submit" href="#"
+                            class="button button-preloader ${loading.value ? 'button-loading' : ''} app-button login_page-login-button"
+                            @click="${login}">
+                            <span class="preloader color-white"></span>
+                            <span>Login</span>
+                        </button>
+                    </div>
+
+                    <div class="block-footer">Don't have an account? <a href="/signup/"
+                            class="link login-screen-close">Signup
+                            here</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</template>
+<style>
+    .login_page-content {
+        max-width: 300px;
+        margin: 0 auto;
+
+    }
+
+    .page-content {
+        overflow: initial;
+    }
+
+    .login-screen-content .login-screen-title.login_page-title {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 24px;
+        margin-bottom: 35px;
+    }
+
+    .login_page-input-wrapper {
+        margin-bottom: 31px;
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+    }
+
+    input[type='text'].login_page-input,
+    input[type='password'].login_page-input {
+        height: 46px;
+        width: 100%;
+        border: 1px solid rgba(61, 61, 61, 0.20);
+        background: #FFF;
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+
+    .login_page-input input {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+    }
+
+    .button-wrapper {
+        margin: 0 auto;
+        width: 74px;
+        height: 39px;
+        margin-bottom: 63px;
+    }
+
+    .login_page-login-button {
+        padding: 0 12px;
+        font-weight: 400;
+    }
+
+    .block-footer {
+        font-weight: 500;
+        line-height: 14px;
+        color: var(--text-color);
+    }
+
+    .block-footer .link {
+        text-decoration: underline;
+        color: var(--text-color);
+    }
+
+    .error {
+        outline-offset: -2px;
+        outline: 2px var(--text-color-accent) solid !important;
+    }
+
+    .error-message {
+        color: var(--text-color-accent);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 12px;
+        margin: 10px 0;
+
+        display: block;
+    }
+</style>
+
+<script>
+    export default (props, { $f7, $update, $store, $f7router }) => {
+
+        let loading = $store.getters.isLoading;
+        let err_message = $store.getters.error;
+        let err_code = $store.getters.errorCode;
+        let isLoading = false;
+        let username = '';
+        let password = '';
+
+        let usernameError = false;
+        let passwordError = false;
+
+        const updateUsername = (e) => {
+            username = e.target.value;
+            usernameError = false;
+            $update();
+        }
+        const updatePassword = (e) => {
+            password = e.target.value;
+            passwordError = false
+            $update();
+        }
+        const login = async (e) => {
+            e.preventDefault();
+            if (loading.value) return;
+            $update();
+            const result = await $store.dispatch('login', { username, password });
+
+            $update();
+            if (result) {
+                $f7router.navigate('/home/', { clearPreviousHistory: true })
+            } else {
+                showErrors();
+            }
+        }
+
+        function showErrors() {
+            if (!err_code.value) {
+                $f7.dialog.alert("<strong>Server Error</strong>, please try again later! If the problem persists, contact the administrator.");
+                return
+            }
+
+            usernameError = err_code.value === 'invalid_username' || err_code.value === 'empty_username' ? true : false;
+
+            passwordError = err_code.value === 'incorrect_password' || err_code.value === 'empty_password' ? true : false;
+        }
+
+        return $render;
+    }
+</script>

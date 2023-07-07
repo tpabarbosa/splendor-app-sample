@@ -1,0 +1,141 @@
+<template>
+    <div class="page no-swipeback login-screen-page" data-name="signup">
+
+        <div class="page-content login-screen-content signup_page-content">
+
+            <div class="signup_page-title">Fill the form to create a new account!</div>
+            <form>
+                <div class="signup_page-input-wrapper">
+                    <input class="signup_page-input" type="text" name="username" placeholder="Your username or email"
+                        required value="${username}" @input="${updateUsername}" />
+                    <input class="signup_page-input" type="password" name="password" placeholder="Your password"
+                        required value="${password}" @input="${updatePassword}" />
+                    <input class="signup_page-input" type="password" name="repeatedPassword"
+                        placeholder="Repeat your password" required value="${repeatedPassword}"
+                        @input="${updateRepeatedPassword}" />
+                    <div class="button-wrapper">
+                        <button type="submit" href="#"
+                            class="button button-preloader ${loading.value ? 'button-loading' : ''} app-button signup_page-signup-button"
+                            @click="${signup}">
+                            <span class="preloader"></span>
+                            <span>Signup</span>
+                        </button>
+                    </div>
+                    <!--
+                    <div>Resp: ${resp}</div>
+                    <div>Message: ${message.value}</div>
+                    <div>Error Message: ${err_message.value}</div>
+                    -->
+                    <div class="block-footer">Do you have an account? <a href="/login/"
+                            class="link login-screen-close">Login
+                            here</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</template>
+<style>
+    .signup_page-content {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .signup_page-title {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 24px;
+        margin-bottom: 35px;
+    }
+
+    .signup_page-input-wrapper {
+        margin-bottom: 31px;
+    }
+
+    .signup_page-input:not(:last-child) {
+        margin-bottom: 26px;
+    }
+
+    input[type='text'].signup_page-input,
+    input[type='password'].signup_page-input {
+        height: 46px;
+        width: 100%;
+        border: 1px solid rgba(61, 61, 61, 0.20);
+        background: #FFF;
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+
+    .signup_page-input input {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+    }
+
+    .button-wrapper {
+        margin: 0 auto;
+        width: 74px;
+        height: 39px;
+        margin-bottom: 63px;
+    }
+
+    .signup_page-login-button {
+        padding: 0 12px;
+        font-weight: 400;
+    }
+
+    .block-footer {
+        font-weight: 500;
+        line-height: 14px;
+        color: var(--text-color);
+    }
+
+    .block-footer .link {
+        text-decoration: underline;
+        color: var(--text-color);
+    }
+</style>
+
+<script>
+    export default (props, { $f7, $update, $store, $f7router }) => {
+
+        let loading = $store.getters.isLoading;
+        let message = $store.getters.error;
+        let err_message = $store.getters.errorCode;
+        let resp = '';
+        let username = '';
+        let password = '';
+        let repeatedPassword = '';
+
+        const updateUsername = (e) => {
+            username = e.target.value;
+            $update();
+        }
+        const updatePassword = (e) => {
+            password = e.target.value;
+            $update();
+        }
+
+        const updateRepeatedPassword = (e) => {
+            repeatedPassword = e.target.value;
+            $update();
+        }
+        const signup = async (e) => {
+            e.preventDefault();
+            if (loading.value) return;
+            $f7.dialog.alert("Sorry, we are working on it...");
+            $update();
+            // const result = await $store.dispatch('signup', { username, password, repeatedPassword });
+
+            // if (result) {
+            //     $f7router.navigate('/login/', { clearPreviousHistory: true })
+            // } else {
+            //     // do something to error messages
+            // }
+
+        }
+        return $render;
+    }
+</script>

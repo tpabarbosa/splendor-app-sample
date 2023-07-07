@@ -1,0 +1,38 @@
+/* iOS Cordova Tweak */
+.device-cordova.device-ios {
+  height: 100vh;
+}
+
+/* Your app custom styles here */
+
+:root {
+  --text-color: #094067;
+  --text-color-light: #28587A;
+  --text-color-accent: #EF4565;
+
+  --f7-page-bg-color: #FFF;
+
+}
+
+#app {
+  color: var(--text-color);
+  font-family: Raleway, sans-serif;
+  font-style: normal;
+}
+
+.app-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 100px;
+    background: linear-gradient(112deg, #82C3FF 0%, #3DA9FC 96.25%);
+    color: #F3F3F3;
+    font-size: 14px;
+    line-height: 48px;
+    text-transform: none;
+
+
+
+
+}

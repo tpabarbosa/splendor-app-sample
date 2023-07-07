@@ -1,0 +1,108 @@
+<template>
+    <div class="page">
+        <div class="toolbar toolbar-bottom tabbar">
+            <div class="toolbar-inner">
+
+                <a href="#tab-1" class="tab-link tab-link-active tab-home">
+                    <img src="images/glyph_house.svg" />
+                    <span class="tabbar-label">Home</span>
+                </a>
+
+                <a href="#tab-2" class="tab-link">
+                    <img src="images/reminder.svg" />
+                </a>
+                <a href="#tab-3" class="tab-link">
+                    <img src="images/search.svg" />
+                </a>
+                <a href="#tab-4" class="tab-link">
+                    <img src="images/profile.svg" />
+                </a>
+            </div>
+        </div>
+        <swiper-container class="tabs">
+            <swiper-slide id="tab-1" class="page-content tab tab-active">
+                <${Main} />
+            </swiper-slide>
+            <swiper-slide id="tab-2" class="page-content tab">
+                <div class="block">
+                    <h1>TODO REMINDER</h1>
+                </div>
+            </swiper-slide>
+            <swiper-slide id="tab-3" class="page-content tab">
+                <div class="block">
+                    <h1>TODO SEARCH</h1>
+                </div>
+            </swiper-slide>
+            <swiper-slide id="tab-4" class="page-content tab">
+                <div class="block">
+                    <h1>TODO PROFILE</h>
+                </div>
+            </swiper-slide>
+        </swiper-container>
+    </div>
+</template>
+<style>
+    .toolbar {
+        border-radius: 20px 20px 0px 0px;
+        background: #FFF !important;
+        box-shadow: 0px -4px 20px 0px rgba(35, 64, 142, 0.10);
+        height: 80px;
+    }
+
+    .toolbar-bottom:before,
+    .ios .toolbar-bottom-ios:before,
+    .md .toolbar-bottom-md:before {
+        height: 0px;
+    }
+
+    .toolbar-inner {
+        gap: 14px;
+        justify-content: center;
+    }
+
+    .tabbar .tab-link {
+        flex-direction: row;
+        border-radius: 1000px;
+        height: 48px;
+        width: auto;
+    }
+
+    .tab-home {
+        max-width: 108px !important;
+
+    }
+
+    .tabbar-label {
+        color: var(--text-color);
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 20px;
+    }
+
+    .md .tabbar .tab-link {
+        padding: 14px;
+    }
+
+    .tabbar .tab-link {
+        padding: 14px;
+    }
+
+    .md .tabbar .tab-link-active {
+        background: #F1F9FF;
+    }
+
+    .tabbar .tab-link-active {
+        background: #F1F9FF;
+    }
+
+    .tab-link-highlight {
+        display: none;
+    }
+</style>
+<script>
+    import Main from './home-main.f7'
+
+    export default () => {
+        return $render;
+    }
+</script>

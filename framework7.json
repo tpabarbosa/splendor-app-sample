@@ -1,0 +1,31 @@
+{
+  "cwd": "D:\\Dev\\ProcessosSeletivos\\splendor\\framework7",
+  "type": [
+    "cordova"
+  ],
+  "name": "Splendor App Sample",
+  "pkg": "io.framework.appsample",
+  "framework": "core",
+  "template": "single-view",
+  "bundler": "vite",
+  "cssPreProcessor": false,
+  "cordova": {
+    "folder": "cordova",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "plugins": [
+      "cordova-plugin-statusbar",
+      "cordova-plugin-keyboard",
+      "cordova-plugin-splashscreen"
+    ]
+  },
+  "theming": {
+    "customColor": true,
+    "color": "#3DA9FC",
+    "darkMode": false,
+    "iconFonts": true
+  },
+  "customBuild": false
+}

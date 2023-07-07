@@ -1,0 +1,122 @@
+<template>
+  <div class="page" data-name="onboarding">
+
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="onboarding_page--title-wrapper">
+        <h1 class="onboarding_page-title">Take Care Of Your Health!</h1>
+        <h2 class="onboarding_page-subtitle">With O Medic</h2>
+      </div>
+
+      <div class="onboarding_page-hero">
+        <div class="onboarding_page-hero-inner">
+          <div class="onboarding_page-hero-decoration-1"></div>
+          <div class="onboarding_page-hero-decoration-2"></div>
+        </div>
+        <img class="onboarding_page-hero-image" src="images/doctor-1.png" alt="Doctor" />
+      </div>
+      <p class="onboarding_page-subtitle text-align-center">Manage your health ease with us</p>
+
+
+
+      <div class="button-wrapper">
+        <a href="/login/" class="onboarding_page-login-button app-button login-screen-open"
+          data-login-screen="#login-screen">Get
+          Started</a>
+
+      </div>
+
+
+
+    </div>
+    <circle-decoration top="calc(100% - 294px)" left="calc(50% - 147px)" />
+  </div>
+</template>
+
+<style>
+  .onboarding_page--title-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 33px 20px 0 20px;
+  }
+
+  .onboarding_page-title {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 56px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .onboarding_page-subtitle {
+    height: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 48px;
+    letter-spacing: 0.8px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .onboarding_page-hero {
+    position: relative;
+    margin: 17px 20px 7px;
+  }
+
+  .onboarding_page-hero-inner {
+    height: 420px;
+    border-radius: 40px;
+    background: #90B4CE;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .onboarding_page-hero-image {
+    position: absolute;
+    top: -60px;
+    left: 20px;
+    background: url(../assets/images/doctor-1.png), no-repeat;
+  }
+
+  .onboarding_page-hero-decoration-1 {
+    position: absolute;
+    left: -21px;
+    bottom: 35px;
+    width: 168px;
+    height: 168px;
+    border-radius: 168px;
+    background: linear-gradient(84deg, rgba(156, 190, 215, 0.92) 0%, rgba(156, 190, 215, 0.00) 100%);
+  }
+
+  .onboarding_page-hero-decoration-2 {
+    position: absolute;
+    top: -60px;
+    right: -90px;
+    width: 280px;
+    height: 280px;
+    border-radius: 280px;
+    background: linear-gradient(61deg, rgba(156, 190, 215, 0.92) 0%, rgba(156, 190, 215, 0.00) 83.44%);
+  }
+
+  .button-wrapper {
+    margin: 61px 20px 17px;
+    position: relative;
+  }
+
+  .onboarding_page-login-button {
+    padding: 8px 120px;
+    font-weight: 500;
+  }
+</style>
+
+<script>
+  export default () => {
+
+    return $render;
+  }
+</script>

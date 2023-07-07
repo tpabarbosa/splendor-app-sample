@@ -1,0 +1,239 @@
+<template>
+    <div class="block">
+        <header class="home_main_page-header">
+            <circle-decoration top="auto" left="calc(100vw - 191px);" />
+            <div>
+                <h1 class="home_main_page-title">Welcome</h1>
+                <span class="home_main_page-display-name">${user.value?.display_name}</span>
+            </div>
+
+            ${user.value?.photo ?
+            $h`<img class="home_main_page-avatar" src="${user.value.photo}" />` :
+            $h`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                class="home_main_page-avatar">
+                <path fill-rule="evenodd"
+                    d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                    clip-rule="evenodd" />
+            </svg>
+            `
+            }
+
+        </header>
+
+        <div class="home_main_page-hero">
+            <div class="home_main_page-hero-inner">
+                <div class="home_main_page-hero-decoration-1"></div>
+            </div>
+            <img class="home_main_page-hero-image" src="images/doctor-2.png" alt="Doctor" />
+            <div class="home_main_page-hero-info-wrapper">
+                <div class="home_main_page-hero-doctors-available-wrapper">
+                    <span class="home_main_page-hero-doctors-available-notification"></span>
+                    <span class="home_main_page-hero-doctors-available-text">${doctors.value.count} Doctor
+                        available</span>
+                </div>
+                <div class="home_main_page-hero-title">Get free consultation for new users</div>
+                <a href="#tab-3" class="tab-link button app-button home_main_page-hero-button">Find a doctor</a>
+            </div>
+        </div>
+
+        <div class="home_main_page-services-wrapper">
+            <h2 class="home_main_page-section-title">Our Services</h2>
+            <div class="home_main_page-services">
+                <${Service} text="Hospital" image="images/hospital.svg" color="blue" />
+                <${Service} text="Medicines" image="images/medicine.svg" color="red" />
+                <${Service} text="Ambulance" image="images/ambulance.svg" color="green" />
+                <${Service} text="Health" image="images/health.svg" color="yellow" />
+            </div>
+        </div>
+
+        <div class="home_main_page-appointments-wrapper">
+            <h2 class="home_main_page-section-title">Appointments</h2>
+            <${Appointment} start="08:00" end="09:00" date="Wed Jun 20" docimage="images/doc-avatar.png"
+                docname="Indah Kusumaningrum" />
+        </div>
+    </div>
+</template>
+<style>
+    .home_main_page-header {
+        color: var(--text-color);
+        margin: 28px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .home_main_page-title {
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 48px;
+        margin: 0;
+    }
+
+    .home_main_page-display-name {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 48px;
+        letter-spacing: 0.8px;
+    }
+
+    .home_main_page-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        fill: lightgray;
+        object-fit: cover;
+        border-radius: 48px;
+        border: 2px solid #FFF;
+    }
+
+    .home_main_page-hero {
+        position: relative;
+        margin-bottom: 32px;
+    }
+
+    .home_main_page-hero-inner {
+        height: 190px;
+        border-radius: 20px;
+        background: #90B4CE;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .home_main_page-hero-image {
+        position: absolute;
+        top: -54px;
+        right: -7px;
+        background: url(../assets/images/doctor-2.png), no-repeat;
+    }
+
+    .home_main_page-hero-decoration-1 {
+        position: absolute;
+        right: -7px;
+        top: -61px;
+        width: 197px;
+        height: 197px;
+        border-radius: 197px;
+        background: rgba(156, 190, 215, 0.92);
+    }
+
+    .home_main_page-hero-info-wrapper {
+        position: absolute;
+        top: 24px;
+        left: 18px;
+        max-width: calc(100% - 200px);
+    }
+
+    .home_main_page-hero-doctors-available-wrapper {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 4px;
+    }
+
+    .home_main_page-hero-doctors-available-text {
+        color: #FFFFFE;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 13px;
+        letter-spacing: -0.5px;
+    }
+
+    .home_main_page-hero-doctors-available-notification {
+        display: inline-block;
+        border-radius: 8px;
+        border: 2px solid rgba(94, 255, 110, 0.20);
+        background: #5EFF6E;
+        width: 8px;
+        height: 8px;
+    }
+
+    .home_main_page-hero-title {
+        color: #FFFFFE;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 24px;
+        margin-bottom: 12px;
+    }
+
+    .home_main_page-hero-button {
+        padding: 0 12px;
+        font-size: 12px;
+        font-weight: 400;
+        width: 98px;
+        height: 39px;
+    }
+
+    .home_main_page-services-wrapper {
+        margin-bottom: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .home_main_page-section-title {
+        color: var(--text-color);
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 24px;
+        margin: 0;
+        height: 32px;
+    }
+
+    .home_main_page-services {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .home_main_page-appointments-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 40px;
+    }
+
+    .home_main_page-appointment {
+        display: flex;
+        padding: 12px 12px 12px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        border-radius: 12px;
+        background: #FFFFFE;
+        box-shadow: 9px 19px 50px 0px rgba(170, 170, 170, 0.20);
+    }
+</style>
+<script>
+    import Service from "./service-component.f7"
+    import Appointment from "./appointment-component.f7"
+
+    // async function loadUser(store) {
+    //     let user = window.localStorage.getItem('user');
+
+    //     if (user) {
+    //         store.dispatch('setUser', JSON.parse(user));
+    //         return
+    //     }
+
+    //     const resp = await store.dispatch('login', { username: 'awesometeam', password: 'wearesplendor#123' })
+
+    //     if (resp) {
+    //         window.localStorage.setItem('user', JSON.stringify(store.state.user));
+    //         return
+    //     }
+
+    // }
+
+    export default (props, { $store, $on }) => {
+
+        // loadUser($store);
+
+        let doctors = $store.getters.doctors;
+
+        let user = $store.getters.user;
+
+        return $render;
+    }
+</script>
